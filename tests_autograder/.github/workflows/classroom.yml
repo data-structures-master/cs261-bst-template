@@ -1,0 +1,607 @@
+name: BST Autograding
+
+on: [push]
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      # ---------- Individual Tests (BST) ----------
+
+      - name: Instantiation
+        id: instantiation
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Instantiation
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_instantiation
+          timeout: 10
+          max-score: 1
+
+      - name: Initial Attributes
+        id: initial_attributes
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Initial Attributes
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_initial_attributes
+          timeout: 10
+          max-score: 1
+
+      - name: Instantiate With Key
+        id: instantiate_with_key
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Instantiate With Key
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_instatiate_with_key
+          timeout: 10
+          max-score: 1
+
+      - name: Insert Single Smaller
+        id: insert_single_smaller
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Insert Single Smaller
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_insert_single_smaller
+          timeout: 10
+          max-score: 1
+
+      - name: Insert Single Equal
+        id: insert_single_equal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Insert Single Equal
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_insert_single_equal
+          timeout: 10
+          max-score: 1
+
+      - name: Insert Single Greater
+        id: insert_single_greater
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Insert Single Greater
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_insert_single_greater
+          timeout: 10
+          max-score: 1
+
+      - name: Search Single None
+        id: search_single_none
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Search Single None
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_search_single_none
+          timeout: 10
+          max-score: 1
+
+      - name: Search Single One
+        id: search_single_one
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Search Single One
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_search_single_one
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Single Nonexistent
+        id: delete_single_nonexistent
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Single Nonexistent
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_single_nonexistent
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Single
+        id: delete_single
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Single
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_single
+          timeout: 10
+          max-score: 1
+
+      - name: Insert Two Smaller Left
+        id: insert_two_smaller_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Insert Two Smaller Left
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_insert_two_smaller_left
+          timeout: 10
+          max-score: 1
+
+      - name: Insert Two Greater Left
+        id: insert_two_greater_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Insert Two Greater Left
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_insert_two_greater_left
+          timeout: 10
+          max-score: 1
+
+      - name: Insert Two Greater Right
+        id: insert_two_greater_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Insert Two Greater Right
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_insert_two_greater_right
+          timeout: 10
+          max-score: 1
+
+      - name: Insert Two Smaller Right
+        id: insert_two_smaller_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Insert Two Smaller Right
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_insert_two_smaller_right
+          timeout: 10
+          max-score: 1
+
+      - name: Search Two Basics
+        id: search_two_basics
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Search Two Basics
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_search_two_basics
+          timeout: 10
+          max-score: 1
+
+      - name: Search Two Root
+        id: search_two_root
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Search Two Root
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_search_two_root
+          timeout: 10
+          max-score: 1
+
+      - name: Search Two Left
+        id: search_two_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Search Two Left
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_search_two_left
+          timeout: 10
+          max-score: 1
+
+      - name: Search Two Right
+        id: search_two_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Search Two Right
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_search_two_right
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Two Nonexistent
+        id: delete_two_nonexistent
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Two Nonexistent
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_two_nonexistent
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Two Left Leaf
+        id: delete_two_left_leaf
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Two Left Leaf
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_two_left_leaf
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Two Right Leaf
+        id: delete_two_right_leaf
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Two Right Leaf
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_two_right_leaf
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Two Root With Left
+        id: delete_two_root_with_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Two Root With Left
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_two_root_with_left
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Two Root With Right
+        id: delete_two_root_with_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Two Root With Right
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_two_root_with_right
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Two Root
+        id: delete_two_root
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Two Root
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_two_root
+          timeout: 10
+          max-score: 1
+
+      - name: Is Leaf
+        id: is_leaf
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Is Leaf
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_is_leaf
+          timeout: 10
+          max-score: 1
+
+      - name: With Left Child Is Not Leaf
+        id: with_left_child_is_not_leaf
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: With Left Child Is Not Leaf
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_with_left_child_is_not_leaf
+          timeout: 10
+          max-score: 1
+
+      - name: With Right Child Is Not Leaf
+        id: with_right_child_is_not_leaf
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: With Right Child Is Not Leaf
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_with_right_child_is_not_leaf
+          timeout: 10
+          max-score: 1
+
+      - name: Has Left Child
+        id: has_left_child
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Has Left Child
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_has_left_child
+          timeout: 10
+          max-score: 1
+
+      - name: Not Has Left Child
+        id: not_has_left_child
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Not Has Left Child
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_not_has_left_child
+          timeout: 10
+          max-score: 1
+
+      - name: Has Right Child
+        id: has_right_child
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Has Right Child
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_has_right_child
+          timeout: 10
+          max-score: 1
+
+      - name: Not Has Right Child
+        id: not_has_right_child
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Not Has Right Child
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_not_has_right_child
+          timeout: 10
+          max-score: 1
+
+      - name: Find Minimum One
+        id: find_minimum_one
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Find Minimum One
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_find_minimum_one
+          timeout: 10
+          max-score: 1
+
+      - name: Find Minimum Two
+        id: find_minimum_two
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Find Minimum Two
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_find_minimum_two
+          timeout: 10
+          max-score: 1
+
+      - name: Find Minimum Three
+        id: find_minimum_three
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Find Minimum Three
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_find_minimum_three
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Three Nonexistent
+        id: delete_three_nonexistent
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Three Nonexistent
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_three_nonexistent
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Three Leftmost Leaf
+        id: delete_three_leftmost_leaf
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Three Leftmost Leaf
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_three_leftmost_leaf
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Three Inner Left Leaf
+        id: delete_three_inner_left_leaf
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Three Inner Left Leaf
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_three_inner_left_leaf
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Three Inner Right Leaf
+        id: delete_three_inner_right_leaf
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Three Inner Right Leaf
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_three_inner_right_leaf
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Three Rightmost Leaf
+        id: delete_three_rightmost_leaf
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Three Rightmost Leaf
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_three_rightmost_leaf
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Three Left
+        id: delete_three_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Three Left
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_three_left
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Three Right
+        id: delete_three_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Three Right
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_three_right
+          timeout: 10
+          max-score: 1
+
+      - name: Delete Three Root
+        id: delete_three_root
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Delete Three Root
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_delete_three_root
+          timeout: 10
+          max-score: 1
+
+      - name: Insertions
+        id: insertions
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Insertions
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_insertions
+          timeout: 10
+          max-score: 1
+
+      - name: One Pre Order
+        id: one_pre_order
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: One Pre Order
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_one_pre_order
+          timeout: 10
+          max-score: 1
+
+      - name: One In Order
+        id: one_in_order
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: One In Order
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_one_in_order
+          timeout: 10
+          max-score: 1
+
+      - name: One Post Order
+        id: one_post_order
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: One Post Order
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_one_post_order
+          timeout: 10
+          max-score: 1
+
+      - name: Two Pre Order
+        id: two_pre_order
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Two Pre Order
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_two_pre_order
+          timeout: 10
+          max-score: 1
+
+      - name: Two In Order
+        id: two_in_order
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Two In Order
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_two_in_order
+          timeout: 10
+          max-score: 1
+
+      - name: Two Post Order
+        id: two_post_order
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Two Post Order
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_two_post_order
+          timeout: 10
+          max-score: 1
+
+      - name: Three Pre Order
+        id: three_pre_order
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Three Pre Order
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_three_pre_order
+          timeout: 10
+          max-score: 1
+
+      - name: Three In Order
+        id: three_in_order
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Three In Order
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_three_in_order
+          timeout: 10
+          max-score: 1
+
+      - name: Three Post Order
+        id: three_post_order
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Three Post Order
+          setup-command: ""
+          command: python -m unittest tests_autograder.tests_all.TestBinarySearchTree.test_three_post_order
+          timeout: 10
+          max-score: 1
+
+      # ---------- Reporter ----------
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          INSTANTIATION_RESULTS: "${{ steps.instantiation.outputs.result }}"
+          INITIAL_ATTRIBUTES_RESULTS: "${{ steps.initial_attributes.outputs.result }}"
+          INSTANTIATE_WITH_KEY_RESULTS: "${{ steps.instantiate_with_key.outputs.result }}"
+          INSERT_SINGLE_SMALLER_RESULTS: "${{ steps.insert_single_smaller.outputs.result }}"
+          INSERT_SINGLE_EQUAL_RESULTS: "${{ steps.insert_single_equal.outputs.result }}"
+          INSERT_SINGLE_GREATER_RESULTS: "${{ steps.insert_single_greater.outputs.result }}"
+          SEARCH_SINGLE_NONE_RESULTS: "${{ steps.search_single_none.outputs.result }}"
+          SEARCH_SINGLE_ONE_RESULTS: "${{ steps.search_single_one.outputs.result }}"
+          DELETE_SINGLE_NONEXISTENT_RESULTS: "${{ steps.delete_single_nonexistent.outputs.result }}"
+          DELETE_SINGLE_RESULTS: "${{ steps.delete_single.outputs.result }}"
+          INSERT_TWO_SMALLER_LEFT_RESULTS: "${{ steps.insert_two_smaller_left.outputs.result }}"
+          INSERT_TWO_GREATER_LEFT_RESULTS: "${{ steps.insert_two_greater_left.outputs.result }}"
+          INSERT_TWO_GREATER_RIGHT_RESULTS: "${{ steps.insert_two_greater_right.outputs.result }}"
+          INSERT_TWO_SMALLER_RIGHT_RESULTS: "${{ steps.insert_two_smaller_right.outputs.result }}"
+          SEARCH_TWO_BASICS_RESULTS: "${{ steps.search_two_basics.outputs.result }}"
+          SEARCH_TWO_ROOT_RESULTS: "${{ steps.search_two_root.outputs.result }}"
+          SEARCH_TWO_LEFT_RESULTS: "${{ steps.search_two_left.outputs.result }}"
+          SEARCH_TWO_RIGHT_RESULTS: "${{ steps.search_two_right.outputs.result }}"
+          DELETE_TWO_NONEXISTENT_RESULTS: "${{ steps.delete_two_nonexistent.outputs.result }}"
+          DELETE_TWO_LEFT_LEAF_RESULTS: "${{ steps.delete_two_left_leaf.outputs.result }}"
+          DELETE_TWO_RIGHT_LEAF_RESULTS: "${{ steps.delete_two_right_leaf.outputs.result }}"
+          DELETE_TWO_ROOT_WITH_LEFT_RESULTS: "${{ steps.delete_two_root_with_left.outputs.result }}"
+          DELETE_TWO_ROOT_WITH_RIGHT_RESULTS: "${{ steps.delete_two_root_with_right.outputs.result }}"
+          DELETE_TWO_ROOT_RESULTS: "${{ steps.delete_two_root.outputs.result }}"
+          IS_LEAF_RESULTS: "${{ steps.is_leaf.outputs.result }}"
+          WITH_LEFT_CHILD_IS_NOT_LEAF_RESULTS: "${{ steps.with_left_child_is_not_leaf.outputs.result }}"
+          WITH_RIGHT_CHILD_IS_NOT_LEAF_RESULTS: "${{ steps.with_right_child_is_not_leaf.outputs.result }}"
+          HAS_LEFT_CHILD_RESULTS: "${{ steps.has_left_child.outputs.result }}"
+          NOT_HAS_LEFT_CHILD_RESULTS: "${{ steps.not_has_left_child.outputs.result }}"
+          HAS_RIGHT_CHILD_RESULTS: "${{ steps.has_right_child.outputs.result }}"
+          NOT_HAS_RIGHT_CHILD_RESULTS: "${{ steps.not_has_right_child.outputs.result }}"
+          FIND_MINIMUM_ONE_RESULTS: "${{ steps.find_minimum_one.outputs.result }}"
+          FIND_MINIMUM_TWO_RESULTS: "${{ steps.find_minimum_two.outputs.result }}"
+          FIND_MINIMUM_THREE_RESULTS: "${{ steps.find_minimum_three.outputs.result }}"
+          DELETE_THREE_NONEXISTENT_RESULTS: "${{ steps.delete_three_nonexistent.outputs.result }}"
+          DELETE_THREE_LEFTMOST_LEAF_RESULTS: "${{ steps.delete_three_leftmost_leaf.outputs.result }}"
+          DELETE_THREE_INNER_LEFT_LEAF_RESULTS: "${{ steps.delete_three_inner_left_leaf.outputs.result }}"
+          DELETE_THREE_INNER_RIGHT_LEAF_RESULTS: "${{ steps.delete_three_inner_right_leaf.outputs.result }}"
+          DELETE_THREE_RIGHTMOST_LEAF_RESULTS: "${{ steps.delete_three_rightmost_leaf.outputs.result }}"
+          DELETE_THREE_LEFT_RESULTS: "${{ steps.delete_three_left.outputs.result }}"
+          DELETE_THREE_RIGHT_RESULTS: "${{ steps.delete_three_right.outputs.result }}"
+          DELETE_THREE_ROOT_RESULTS: "${{ steps.delete_three_root.outputs.result }}"
+          INSERTIONS_RESULTS: "${{ steps.insertions.outputs.result }}"
+          ONE_PRE_ORDER_RESULTS: "${{ steps.one_pre_order.outputs.result }}"
+          ONE_IN_ORDER_RESULTS: "${{ steps.one_in_order.outputs.result }}"
+          ONE_POST_ORDER_RESULTS: "${{ steps.one_post_order.outputs.result }}"
+          TWO_PRE_ORDER_RESULTS: "${{ steps.two_pre_order.outputs.result }}"
+          TWO_IN_ORDER_RESULTS: "${{ steps.two_in_order.outputs.result }}"
+          TWO_POST_ORDER_RESULTS: "${{ steps.two_post_order.outputs.result }}"
+          THREE_PRE_ORDER_RESULTS: "${{ steps.three_pre_order.outputs.result }}"
+          THREE_IN_ORDER_RESULTS: "${{ steps.three_in_order.outputs.result }}"
+          THREE_POST_ORDER_RESULTS: "${{ steps.three_post_order.outputs.result }}"
+        with:
+          runners: instantiation,initial_attributes,instantiate_with_key,insert_single_smaller,insert_single_equal,insert_single_greater,search_single_none,search_single_one,delete_single_nonexistent,delete_single,insert_two_smaller_left,insert_two_greater_left,insert_two_greater_right,insert_two_smaller_right,search_two_basics,search_two_root,search_two_left,search_two_right,delete_two_nonexistent,delete_two_left_leaf,delete_two_right_leaf,delete_two_root_with_left,delete_two_root_with_right,delete_two_root,is_leaf,with_left_child_is_not_leaf,with_right_child_is_not_leaf,has_left_child,not_has_left_child,has_right_child,not_has_right_child,find_minimum_one,find_minimum_two,find_minimum_three,delete_three_nonexistent,delete_three_leftmost_leaf,delete_three_inner_left_leaf,delete_three_inner_right_leaf,delete_three_rightmost_leaf,delete_three_left,delete_three_right,delete_three_root,insertions,one_pre_order,one_in_order,one_post_order,two_pre_order,two_in_order,two_post_order,three_pre_order,three_in_order,three_post_order
